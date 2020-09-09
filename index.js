@@ -39,12 +39,15 @@ app.get('/api/countries', (req, res) => {
 	});
 });
 
+console.log(path.join(__dirname, 'client', 'build'));
+
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
 	app.use(express.static(path.join(__dirname, 'client', 'build')));
 
-	app.get('*', (req, res) => {
-		res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+	app.get('*', function(req, res) {
+		const index = path.join(__dirname, 'build', 'index.html');
+		res.sendFile(index);
 	});
 }
 
