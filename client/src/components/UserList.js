@@ -6,7 +6,7 @@ import Row from './Row'
 const UserList = (props) => {
 
      const [users,setUsers]=useState([])
-
+    const [loading,setLoading]=useState(true);
 
     useEffect(()=>{
        
@@ -15,7 +15,7 @@ const UserList = (props) => {
                 console.log(data.error)
             }else{
                 setUsers(data)
-                
+                setLoading(false);
             }
         })
     },[])
@@ -27,6 +27,7 @@ const UserList = (props) => {
                 console.log(data.error)
             }else{
                 setUsers(data)
+                setLoading(false);
                 
             }
         })
@@ -65,6 +66,13 @@ const UserList = (props) => {
     return ( 
         <div>
             {
+               loading ?(
+                   <div>
+                       <h4 className='disply-4 mt-3'>Loading....</h4>
+                   </div>
+               ):(
+                    <div>
+                         {
                 users.length>0?(
                     <div>
                          <div className="row mt-4 align-items-center">
@@ -106,6 +114,10 @@ const UserList = (props) => {
                     <h3 className='display-4'>No Users Present</h3>
                 )
             }
+                    </div>
+               )
+            }
+           
             </div>
           
      );
