@@ -68,7 +68,7 @@ const UserList = (props) => {
             {
                loading ?(
                    <div>
-                       <h4 className='disply-4 mt-3'>Loading....</h4>
+                       <h4 className='display-4 mt-3'>Loading....</h4>
                    </div>
                ):(
                     <div>
